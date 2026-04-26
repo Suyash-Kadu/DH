@@ -1,7 +1,18 @@
 import streamlit as st
 import numpy as np
-import locale
 from supabase import create_client, Client
+
+def format_indian_currency(number):
+    s = str(int(number))
+    if len(s) <= 3:
+        return s
+    else:
+        last_three = s[-3:]
+        remaining = s[:-3]
+        # उर्वरित अंकांना दर २ अंकांनंतर स्वल्पविराम (comma) लावणे
+        import re
+        remaining = re.sub(r'(\d+?)(?=(\d{2})+(?!\d))', r'\1,', remaining)
+        return f"{remaining},{last_three}"
 
 # --- Supabase Setup ---
 
@@ -65,13 +76,11 @@ list = [name, sound, light, gen, pavti, flex, shal, crane, other]
 
 arr = np.array([sound, light, gen, pavti, flex, shal, crane, other, dhol, handi_deco, pol, oper, crane])
 
-try:
-    locale.setlocale(locale.LC_ALL, 'en_IN.UTF-8')
-except:
-    locale.setlocale(locale.LC_ALL, 'en_IN')
-
 total = np.sum(arr)
-formatted_total = locale.format_string("%d", total, grouping=True)
+
+# फंक्शन वापरून फॉरमॅटिंग करा
+formatted_total = format_indian_currency(total)
+
 st.markdown(
     f"""
     <div style="
