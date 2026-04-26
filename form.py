@@ -72,7 +72,7 @@ st.divider()
 comment = st.text_area("**कमेंट**", height=150)
 st.divider()
 
-list = [name, sound, light, gen, pavti, flex, shal, crane, other]
+list = [name, sound, light, gen, pavti, flex, shal, other]
 
 arr = np.array([sound, light, gen, pavti, flex, shal, crane, other, dhol, handi_deco, pol, oper, crane])
 
