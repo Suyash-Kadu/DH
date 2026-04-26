@@ -125,7 +125,6 @@ if all(list):
             try:
                 response = supabase.table("dahi_handi_budget").insert(data).execute()
                 st.success("माहिती यशस्वीरित्या नोंदवली गेली आहे!")
-                st.toast('धन्यवाद!', icon='🙏')
                 st.balloons()
             except Exception as e:
                 st.error(f"Error: {e}")
