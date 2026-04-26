@@ -11,7 +11,7 @@ supabase: Client = create_client(url, key)
 
 col1, col2, col3 = st.columns(3)
 with col2:
-    st.image("C:/Users/Suyash Kadu/Downloads/20260316_180954.jpg.jpeg", width=200)
+    st.image("20260316_180954.jpg", width=200)
 
 col1, col2, col3 = st.columns([0.6,1.75,0.6])
 with col2:
